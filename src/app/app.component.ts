@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Station } from './station';
-import { StationService } from './station.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +6,15 @@ import { StationService } from './station.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit{
-  title = 'app';
-  stations: Station[] = [];
+export class AppComponent {
+  stationSelected: String = null;
 
-  constructor (
-    private stationService: StationService
-  ) {}
+  selectStation (id): void {
+    this.stationSelected = id;
+  }
 
-  ngOnInit(): void {
-    this.stationService.getStations().then(stations => this.stations = stations);
+  dismissStationDetails (): void {
+    this.stationSelected = null;
   }
 }
+

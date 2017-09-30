@@ -1,0 +1,33 @@
+.station-details {}
+
+.station-details-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+    max-width: 320px;
+    background-color: #FFF;
+    transform: translateX(-100%);
+    transition: all ease 400ms;
+}
+
+.station-details-dialog-underlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.70);
+    cursor: pointer;
+}
+
+.station-details--in .station-details-dialog {
+    transform: translateX(0);
+}
+
+.station-details--in .station-details-dialog-underlay {
+    display: block;
+}
+

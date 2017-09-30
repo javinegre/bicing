@@ -1,0 +1,8 @@
+<div id="map-layer" class="map-layer">
+  <div *ngFor="let station of stations"
+    class="map-marker"
+    (click)="selectStation($event, station.id)"
+    [ngStyle]="{top: station.latitude + 'px', left: station.longitude + 'px' }">
+    ({{ station.id }}) {{ station.bikes }} / {{ station.slots }}
+  </div>
+</div>

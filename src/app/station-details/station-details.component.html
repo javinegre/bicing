@@ -1,0 +1,24 @@
+<div class="station-details" [ngClass]="{'station-details--in': dialogIn()}">
+  <div class="station-details-dialog-underlay" (click)="hideDialog()"></div>
+  <div class="station-details-dialog">
+    <div *ngIf="station !== null">
+      ({{ station.id }}) - {{ station.streetName }}, {{ station.streetNumber }}
+      <br><br>
+      Bikes {{ station.bikes }}
+      <br><br>
+      Slots {{ station.slots }}
+      <br><br>
+      Nearby stations: {{ station.nearbyStations }}
+      <!--
+      type: string;
+      latitude: string;
+      longitude: string;
+      altitude: string;
+      status: string;
+      -->
+    </div>
+    <div *ngIf="station === null">
+      Not found
+    </div>
+  </div>
+</div>

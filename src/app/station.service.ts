@@ -6,6 +6,10 @@ import { STATIONS } from './mock-stations';
 @Injectable()
 
 export class StationService {
+    getStation (id): Promise<Station> {
+        return Promise.resolve(STATIONS.find( station => station.id === id ) || null);
+    }
+
     getStations(): Promise<Station[]> {
         return Promise.resolve(STATIONS);
     }
