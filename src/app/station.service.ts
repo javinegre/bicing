@@ -13,4 +13,8 @@ export class StationService {
     getStations(): Promise<Station[]> {
         return Promise.resolve(STATIONS);
     }
+
+    getStationsById(IDs): Promise<Station[]> {
+        return Promise.resolve(STATIONS.filter( station => IDs.indexOf(station.id) >= 0 ));
+    }
 }

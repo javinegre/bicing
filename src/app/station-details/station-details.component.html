@@ -22,13 +22,22 @@
           {{ station.bikes }} Bikes
         </div>
       </div>
-      <div>
-        <div>
+      <br>
+      <div class="station-details-nearby">
+        <div class="station-details-nearby-label">
           Nearby stations
         </div>
-        <div>
-          {{ station.nearbyStations }}
-        </div>
+        <ul class="station-details-nearby-list">
+          <li *ngFor="let nearbyStation of nearbyStationList" class="station-details-nearby-list-item">
+            <a (click)="showStationDetails($event, nearbyStation.id)" href="#">
+              {{ nearbyStation.id }}
+              -
+              {{ nearbyStation.streetName }}, {{ nearbyStation.streetNumber }}
+              -
+              {{ nearbyStation.bikes }} / {{ nearbyStation.slots }}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
     <div *ngIf="station === null">

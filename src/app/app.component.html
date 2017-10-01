@@ -19,6 +19,7 @@
 
   <app-station-details [stationId]="stationSelected"
     [resourceMode]="resourceMode"
+    (clickStation)="selectStation($event)"
     (clickBackdrop)="dismissStationDetails()">
   </app-station-details>
 
