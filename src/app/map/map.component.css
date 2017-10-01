@@ -13,3 +13,46 @@
     color: #b0b0b0;
     cursor: pointer;
 }
+
+.map-marker-resource {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #808080;
+    color: #FFFFFF;
+    transform: translate(-50%, -50%);
+}
+
+.map-marker-resource--black {
+    background-color: #181818;
+    /* #282828 */
+}
+
+.map-marker-resource--red {
+    background-color: #C62828;
+    /* #E53935 */
+}
+
+.map-marker-resource--orange {
+    background-color: #FF8F00;
+    /* #FFB300 */
+}
+
+.map-marker-resource--green {
+    background-color: #558B2F;
+    /* #7CB342 */
+}
+
+.map-marker-resource--grey {
+    background-color: #B0BEC5; /* 200 */
+    /* #ECEFF1 // 50 */
+}
+
+.map-marker-bikes {
+    border-radius: 2px;
+}
+
+.map-marker-slots {
+    border-radius: 14px;
+}

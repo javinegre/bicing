@@ -25,4 +25,30 @@ export class MapComponent implements OnInit{
   selectStation(event, id){
     this.clickStation.emit(id);
   }
+
+  getResourceClass(station: Station): String {
+    const resources = this.resourceMode === 'bikes'
+      ? +station.bikes
+      : +station.slots;
+
+    let resourceClass = '';
+
+    if ( station.status !== 'OPN' ) {
+      resourceClass = 'map-marker-resource--grey';
+    }
+    else if ( resources === 0 ) {
+      resourceClass = 'map-marker-resource--black';
+    }
+    else if ( resources === 1 ) {
+      resourceClass = 'map-marker-resource--red';
+    }
+    else if ( resources < 4 ) {
+      resourceClass = 'map-marker-resource--orange';
+    }
+    else if ( resources >= 4 ) {
+      resourceClass = 'map-marker-resource--green';
+    }
+
+    return resourceClass;
+  }
 }

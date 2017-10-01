@@ -3,10 +3,14 @@
     class="map-marker"
     (click)="selectStation($event, station.id)"
     [ngStyle]="{top: station.latitude + 'px', left: station.longitude + 'px' }">
-    <div *ngIf="resourceMode === 'bikes'">
+    <div class="map-marker-resource map-marker-bikes"
+      [ngClass]="getResourceClass(station)"
+      *ngIf="resourceMode === 'bikes'">
       {{ station.bikes }}
     </div>
-    <div *ngIf="resourceMode === 'slots'">
+    <div class="map-marker-resource map-marker-slots"
+      [ngClass]="getResourceClass(station)"
+      *ngIf="resourceMode === 'slots'">
       {{ station.slots }}
     </div>
   </div>
