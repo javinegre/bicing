@@ -12,6 +12,7 @@ import { StationService } from '../station.service';
 export class StationDetailsComponent implements OnInit {
   @Output() clickBackdrop: EventEmitter<String> = new EventEmitter<String>();
   @Input() stationId: String;
+  @Input() resourceMode: String;
   station: Station = null;
 
   constructor (
@@ -22,7 +23,6 @@ export class StationDetailsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     this.updateStationInfo();
-
   }
 
   updateStationInfo () {

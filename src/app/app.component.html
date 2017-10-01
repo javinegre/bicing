@@ -1,8 +1,25 @@
-<div>
-  <app-map (clickStation)="selectStation($event)">
+<div class="main">
+
+  <app-map [resourceMode]="resourceMode"
+    (clickStation)="selectStation($event)">
   </app-map>
 
+  <nav class="resource-type-toggle">
+    <button class="resource-type-toggle-button"
+      [ngClass]="{'resource-type-toggle-button--active': resourceMode === 'bikes'}"
+      (click)="changeResourceType('bikes')">
+      Bikes
+    </button>
+    <button class="resource-type-toggle-button"
+      [ngClass]="{'resource-type-toggle-button--active': resourceMode === 'slots'}"
+      (click)="changeResourceType('slots')">
+      Slots
+    </button>
+  </nav>
+
   <app-station-details [stationId]="stationSelected"
+    [resourceMode]="resourceMode"
     (clickBackdrop)="dismissStationDetails()">
   </app-station-details>
+
 </div>

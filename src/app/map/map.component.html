@@ -3,6 +3,11 @@
     class="map-marker"
     (click)="selectStation($event, station.id)"
     [ngStyle]="{top: station.latitude + 'px', left: station.longitude + 'px' }">
-    ({{ station.id }}) {{ station.bikes }} / {{ station.slots }}
+    <div *ngIf="resourceMode === 'bikes'">
+      {{ station.bikes }}
+    </div>
+    <div *ngIf="resourceMode === 'slots'">
+      {{ station.slots }}
+    </div>
   </div>
 </div>

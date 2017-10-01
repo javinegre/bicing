@@ -10,9 +10,9 @@ import { StationService } from '../station.service';
 })
 
 export class MapComponent implements OnInit{
-
   @Output() clickStation: EventEmitter<String> = new EventEmitter<String>();
   stations: Station[] = [];
+  @Input() resourceMode: String;
 
   constructor (
       private stationService: StationService

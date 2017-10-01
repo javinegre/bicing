@@ -2,20 +2,34 @@
   <div class="station-details-dialog-underlay" (click)="hideDialog()"></div>
   <div class="station-details-dialog">
     <div *ngIf="station !== null">
-      ({{ station.id }}) - {{ station.streetName }}, {{ station.streetNumber }}
-      <br><br>
-      Bikes {{ station.bikes }}
-      <br><br>
-      Slots {{ station.slots }}
-      <br><br>
-      Nearby stations: {{ station.nearbyStations }}
-      <!--
-      type: string;
-      latitude: string;
-      longitude: string;
-      altitude: string;
-      status: string;
-      -->
+      <h3 class="station-details-name">
+        <span class="station-details-name-id">{{ station.id }}</span>
+        {{ station.streetName }}, {{ station.streetNumber }}
+      </h3>
+      <div *ngIf="resourceMode === 'bikes'">
+        <div>
+          {{ station.bikes }} Bikes
+        </div>
+        <div>
+          {{ station.slots }} Slots
+        </div>
+      </div>
+      <div *ngIf="resourceMode === 'slots'">
+        <div>
+          {{ station.slots }} Slots
+        </div>
+        <div>
+          {{ station.bikes }} Bikes
+        </div>
+      </div>
+      <div>
+        <div>
+          Nearby stations
+        </div>
+        <div>
+          {{ station.nearbyStations }}
+        </div>
+      </div>
     </div>
     <div *ngIf="station === null">
       Not found

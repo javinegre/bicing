@@ -7,9 +7,29 @@
     height: 100%;
     width: 80%;
     max-width: 320px;
+    padding: 1em;
     background-color: #FFF;
     transform: translateX(-100%);
-    transition: all ease 400ms;
+}
+
+.station-details-name {
+    position: relative;
+    padding-right: 44px;
+}
+
+.station-details-name-id {
+    position: absolute;
+    right: 0;
+    top: -1px;
+    width: 38px;
+    line-height: 21px;
+    font-weight: 400;
+    padding-top: 2px;
+    color: #fff;
+    background-color: #c0c0c0;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 2px;
 }
 
 .station-details-dialog-underlay {
@@ -25,6 +45,8 @@
 
 .station-details--in .station-details-dialog {
     transform: translateX(0);
+    transition: transform cubic-bezier(0, 0.8, 0, 1) 600ms 120ms;
+    transition: transform ease 400ms 120ms;
 }
 
 .station-details--in .station-details-dialog-underlay {

@@ -1,6 +1,6 @@
 .map-layer {
     position: absolute;
-    background-color: wheat;
+    background-color: #f0f0f0;
     top: 0;
     left: 0;
     width: 100%;
@@ -9,6 +9,7 @@
 
 .map-marker {
     position: absolute;
-    color: #cbb794;
+    font-family: monospace;
+    color: #b0b0b0;
     cursor: pointer;
 }
