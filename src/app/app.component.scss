@@ -1,0 +1,46 @@
+body {
+    position: relative;
+}
+
+.main {
+    font-family: sans-serif;
+}
+
+.resource-type-toggle {
+    display: flex;
+    position: relative;
+    top: 90vh;
+    left: 0;
+    right: 0;
+    bottom: 1em;
+    justify-content: center;
+
+    &-button {
+        background-color: rgba(50,50,50,.7);
+        border: none;
+        width: 32vw;
+        line-height: 36px;
+        font-size: 18px;
+        font-weight: 300;
+        color: white;
+        cursor: pointer;
+
+        &--active {
+            background-color: rgba(50,50,50,.92);
+        }
+
+        &:hover {
+            background-color: rgba(50,50,50,.85);
+        }
+
+        &:first-child {
+            border-top-left-radius: 36px;
+            border-bottom-left-radius: 36px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 36px;
+            border-bottom-right-radius: 36px;
+        }
+    }
+}

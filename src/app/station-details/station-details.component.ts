@@ -6,7 +6,7 @@ import { StationService } from '../station.service';
 @Component({
   selector: 'app-station-details',
   templateUrl: './station-details.component.html',
-  styleUrls: ['./station-details.component.css']
+  styleUrls: ['./station-details.component.scss']
 })
 
 export class StationDetailsComponent implements OnInit {
