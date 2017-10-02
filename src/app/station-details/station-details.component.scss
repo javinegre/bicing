@@ -1,3 +1,8 @@
+a {
+    color: #303030;
+    text-decoration: none;
+}
+
 .station-details {
 
     &-dialog {
@@ -26,6 +31,7 @@
     &-name {
         position: relative;
         padding-right: 44px;
+        color: #C62828;
 
         &-id {
             position: absolute;
