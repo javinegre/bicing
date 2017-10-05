@@ -7,6 +7,8 @@ import { StationDetailsComponent } from './station-details/station-details.compo
 
 import { StationService } from './station.service';
 
+import { AgmCoreModule } from '@agm/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,10 @@ import { StationService } from './station.service';
     StationDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [ StationService ],
   bootstrap: [ AppComponent ]

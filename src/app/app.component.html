@@ -4,6 +4,12 @@
     (clickStation)="selectStation($event)">
   </app-map>
 
+  <app-station-details [stationId]="stationSelected"
+    [resourceMode]="resourceMode"
+    (clickStation)="selectStation($event)"
+    (clickBackdrop)="dismissStationDetails()">
+  </app-station-details>
+
   <nav class="resource-type-toggle">
     <button class="resource-type-toggle-button"
       [ngClass]="{'resource-type-toggle-button--active': resourceMode === 'bikes'}"
@@ -16,11 +22,5 @@
       Slots
     </button>
   </nav>
-
-  <app-station-details [stationId]="stationSelected"
-    [resourceMode]="resourceMode"
-    (clickStation)="selectStation($event)"
-    (clickBackdrop)="dismissStationDetails()">
-  </app-station-details>
 
 </div>

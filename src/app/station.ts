@@ -1,8 +1,8 @@
 export class Station {
     id: string;
     type: string;
-    latitude: string;
-    longitude: string;
+    latitude: any;
+    longitude: any;
     streetName: string;
     streetNumber: string;
     altitude: string;

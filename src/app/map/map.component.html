@@ -1,17 +1,18 @@
-<div id="map-layer" class="map-layer">
-  <div *ngFor="let station of stations"
-    class="map-marker"
-    (click)="selectStation($event, station.id)"
-    [ngStyle]="{top: station.latitude + 'px', left: station.longitude + 'px' }">
-    <div class="map-marker-resource map-marker-bikes"
-      [ngClass]="getResourceClass(station)"
-      *ngIf="resourceMode === 'bikes'">
-      {{ station.bikes }}
-    </div>
-    <div class="map-marker-resource map-marker-slots"
-      [ngClass]="getResourceClass(station)"
-      *ngIf="resourceMode === 'slots'">
-      {{ station.slots }}
-    </div>
-  </div>
-</div>
+<agm-map id="map-layer"
+  class="map-layer"
+  [latitude]="mapCenter.lat"
+  [longitude]="mapCenter.lng"
+  [zoom]="mapConfig.zoom"
+  [gestureHandling]="mapConfig.gestureHandling"
+  [styles]="mapConfig.styles"
+  (centerChange)="mapDragEnd($event)">
+
+  <agm-marker *ngFor="let st of shownStations"
+    [latitude]="st.latitude"
+    [longitude]="st.longitude"
+    (markerClick)="selectStation($event, st.id)">
+  </agm-marker>
+
+</agm-map>
+
+<div class="map-center"></div>
