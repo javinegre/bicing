@@ -101,29 +101,45 @@ export class MapComponent implements OnInit{
     }, 480);
   }
 
-  // getResourceClass(station: Station): String {
-  //   const resources = this.resourceMode === 'bikes'
-  //     ? +station.bikes
-  //     : +station.slots;
-  //
-  //   let resourceClass = '';
-  //
-  //   if ( station.status !== 'OPN' ) {
-  //     resourceClass = 'map-marker-resource--grey';
-  //   }
-  //   else if ( resources === 0 ) {
-  //     resourceClass = 'map-marker-resource--black';
-  //   }
-  //   else if ( resources === 1 ) {
-  //     resourceClass = 'map-marker-resource--red';
-  //   }
-  //   else if ( resources < 4 ) {
-  //     resourceClass = 'map-marker-resource--orange';
-  //   }
-  //   else if ( resources >= 4 ) {
-  //     resourceClass = 'map-marker-resource--green';
-  //   }
-  //
-  //   return resourceClass;
-  // }
+  getResourceIcon(station: ShownStation): string {
+    const resources = this.resourceMode === 'bikes'
+      ? +station.bikes
+      : +station.slots;
+
+    const resourceType = station._radio === 'outer' || this.resourceMode === 'bikes'
+      ? 'bikes'
+      : 'slots';
+
+    const stationType = station.type === 'BIKE-ELECTRIC'
+      ? 'elec'
+      : 'mech';
+
+    const iconSize = station._radio === 'outer'
+      ? 'small'
+      : 'big';
+
+    let resourceColor = '';
+
+    if ( station.status !== 'OPN' ) {
+      resourceColor = 'black';
+    }
+    else if ( resources === 0 ) {
+      resourceColor = 'gray';
+    }
+    else if ( resources === 1 ) {
+      resourceColor = 'red';
+    }
+    else if ( resources < 4 ) {
+      resourceColor = 'orange';
+    }
+    else if ( resources >= 4 ) {
+      resourceColor = 'green';
+    }
+
+    return `${resourceType}-${stationType}-${resourceColor}-${iconSize}`;
+  }
+
+  getIconUrl(station: ShownStation): string {
+    return `assets/icon-rsrc/${this.getResourceIcon(station)}.svg`
+  }
 }

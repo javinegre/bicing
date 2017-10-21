@@ -1,0 +1,15 @@
+BICING API
+http://datos.gob.es/en/catalogo/l01080193-estaciones-de-bicing-mecanicas-y-electricas
+http://wservice.viabicing.cat/v2/stations
+
+NG BUILD
+https://github.com/angular/angular-cli/wiki/build
+ng build --base-href '/bicing/'
+
+ANGULAR
+https://angular-2-training-book.rangle.io/handout/observables/using_observables.html
+https://blog.angular-university.io/angular-http/
+
+http://brianflove.com/2016/10/22/angular-cli-using-https/
+http://brianflove.com/2014/12/01/self-signed-ssl-certificate-on-mac-yosemite/
+sudo ng serve --ssl 1 --host "local.negre.co" --ssl-key "/private/etc/apache2/ssl/local.negre.co.key" --ssl-cert "/private/etc/apache2/ssl/local.negre.co.crt"

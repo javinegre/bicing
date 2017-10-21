@@ -10,6 +10,7 @@
   <agm-marker *ngFor="let st of shownStations"
     [latitude]="st.latitude"
     [longitude]="st.longitude"
+    [iconUrl]="getIconUrl(st)"
     (markerClick)="selectStation($event, st.id)">
   </agm-marker>
 
