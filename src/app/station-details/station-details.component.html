@@ -2,27 +2,35 @@
   <div class="station-details-dialog-underlay" (click)="hideDialog()"></div>
   <div class="station-details-dialog">
     <div *ngIf="station !== null">
+
+      <div class="station-details-id">{{ station.id }}</div>
+
       <h3 class="station-details-name">
-        <span class="station-details-name-id">{{ station.id }}</span>
         {{ station.streetName }}, {{ station.streetNumber }}
       </h3>
-      <div *ngIf="resourceMode === 'bikes'">
-        <div>
-          {{ station.bikes }} Bikes
+
+      <div *ngIf="resourceMode === 'bikes'" class="station-details-resources">
+        <div class="station-details-resource">
+          <div class="station-details-resource-number">{{ station.bikes }}</div>
+          <div class="station-details-resource-label">Bikes</div>
         </div>
-        <div>
-          {{ station.slots }} Slots
-        </div>
-      </div>
-      <div *ngIf="resourceMode === 'slots'">
-        <div>
-          {{ station.slots }} Slots
-        </div>
-        <div>
-          {{ station.bikes }} Bikes
+        <div class="station-details-resource">
+          <div class="station-details-resource-number">{{ station.slots }}</div>
+          <div class="station-details-resource-label">Slots</div>
         </div>
       </div>
-      <br>
+
+      <div *ngIf="resourceMode === 'slots'" class="station-details-resources">
+        <div class="station-details-resource">
+          <div class="station-details-resource-number">{{ station.slots }}</div>
+          <div class="station-details-resource-label">Slots</div>
+        </div>
+        <div class="station-details-resource">
+          <div class="station-details-resource-number">{{ station.bikes }}</div>
+          <div class="station-details-resource-label">Bikes</div>
+        </div>
+      </div>
+
       <div class="station-details-nearby">
         <div class="station-details-nearby-label">
           Nearby stations
@@ -30,18 +38,28 @@
         <ul class="station-details-nearby-list">
           <li *ngFor="let nearbyStation of nearbyStationList" class="station-details-nearby-list-item">
             <a (click)="showStationDetails($event, nearbyStation.id)" href="#">
-              {{ nearbyStation.id }}
-              -
-              {{ nearbyStation.streetName }}, {{ nearbyStation.streetNumber }}
-              -
-              {{ nearbyStation.bikes }} / {{ nearbyStation.slots }}
+              <span class="station-details-nearby-list-item-id">
+                {{ nearbyStation.id }}
+              </span>
+              <span class="station-details-nearby-list-item-name">
+                {{ nearbyStation.streetName }}, {{ nearbyStation.streetNumber }}
+              </span>
+              <div *ngIf="resourceMode === 'bikes'" class="station-details-nearby-list-item-resources">
+                {{ nearbyStation.bikes }} / {{ nearbyStation.slots }}
+              </div>
+              <div *ngIf="resourceMode === 'slots'" class="station-details-nearby-list-item-resources">
+                {{ nearbyStation.slots }} / {{ nearbyStation.bikes }}
+              </div>
             </a>
           </li>
         </ul>
       </div>
+
     </div>
+
     <div *ngIf="station === null">
       Not found
     </div>
+
   </div>
 </div>
