@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -19,7 +20,8 @@ import { AgmCoreModule } from '@agm/core';
     BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    HttpClientModule
   ],
   providers: [ StationService ],
   bootstrap: [ AppComponent ]

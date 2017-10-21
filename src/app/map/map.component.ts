@@ -33,21 +33,22 @@ export class MapComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.stationService.getStations().then(stations => {
-      this.mapCenter.lat = this.mapConfig.lat;
-      this.mapCenter.lng = this.mapConfig.lng;
+    this.mapCenter.lat = this.mapConfig.lat;
+    this.mapCenter.lng = this.mapConfig.lng;
 
+    this.stationService.getStations(false).then(stations => {
       stations.map(st => {
         st.latitude = +st.latitude;
         st.longitude = +st.longitude;
       });
+
       this.stations = stations;
       this.filterStations();
     });
   }
 
   filterStations(): void {
-    this.shownStations = <ShownStation[]>this.stations.filter((item) => {
+    this.shownStations = this.stations.reduce((filtered, item) => {
       let shownStation: ShownStation = <ShownStation>Object.assign({}, item);
       const lat = +shownStation.latitude;
       const lng = +shownStation.longitude;
@@ -65,9 +66,11 @@ export class MapComponent implements OnInit{
 
         shownStation._distance = this.getStationDistance(lat, lng, centerLat, centerLng);
 
-        return shownStation;
+        filtered.push(shownStation);
       }
-    });
+
+      return filtered;
+    }, <ShownStation[]>[]);
   }
 
   getStationDistance(lat, lng, centerLat, centerLng): number {
