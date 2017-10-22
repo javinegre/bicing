@@ -10,17 +10,17 @@
     (clickBackdrop)="dismissStationDetails()">
   </app-station-details>
 
-  <nav class="resource-type-toggle">
-    <button class="resource-type-toggle-button"
-      [ngClass]="{'resource-type-toggle-button--active': resourceMode === 'bikes'}"
-      (click)="changeResourceType('bikes')">
-      Bikes
-    </button>
-    <button class="resource-type-toggle-button"
-      [ngClass]="{'resource-type-toggle-button--active': resourceMode === 'slots'}"
-      (click)="changeResourceType('slots')">
-      Slots
-    </button>
+  <nav class="controls">
+
+    <div class="resource-type-toggle" [ngClass]="resourceMode === 'bikes' ? 'resource-type-toggle--bikes' : 'resource-type-toggle--slots'">
+      <button class="resource-type-toggle-button" (click)="changeResourceType('bikes')">
+        &#9673;
+      </button>
+      <button class="resource-type-toggle-button" (click)="changeResourceType('slots')">
+        &#9678;
+      </button>
+    </div>
+
   </nav>
 
 </div>
