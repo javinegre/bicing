@@ -17,6 +17,7 @@ export class MapComponent implements OnInit{
   stations: Station[] = [];
   shownStations: ShownStation[] = [];
   @Input() resourceMode: String;
+  @Input() resourceFilter: String;
   @Input() stationSelected: String;
 
   mapConfig = MAPCONFIG;
@@ -55,10 +56,12 @@ export class MapComponent implements OnInit{
       const centerLat = this.mapCenter.lat;
       const centerLng = this.mapCenter.lng;
 
-      const filter = lat > centerLat - 0.009 && lat < centerLat + 0.009
+      const isNearby = lat > centerLat - 0.009 && lat < centerLat + 0.009
         && lng > centerLng - 0.012 && lng < centerLng + 0.012;
 
-      if ( filter ) {
+      const isBikeType = this.resourceFilter === null || this.resourceFilter === shownStation.type;
+
+      if ( isNearby && isBikeType ) {
         shownStation._radio = lat > centerLat - 0.0045 && lat < centerLat + 0.0045
           && lng > centerLng - 0.006 && lng < centerLng + 0.006
           ? 'inner'
@@ -141,5 +144,9 @@ export class MapComponent implements OnInit{
 
   getIconUrl(station: ShownStation): string {
     return `assets/icon-rsrc/${this.getResourceIcon(station)}.svg`
+  }
+
+  ngOnChanges() {
+    this.filterStations();
   }
 }

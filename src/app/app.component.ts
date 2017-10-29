@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   stationSelected: String = null;
   resourceMode: String = 'bikes'; // 'bikes' || 'slots'
+  resourceFilter: String = null; // null || 'BIKE' || 'BIKE-ELECTRIC'
 
   selectStation (id): void {
     this.stationSelected = id;
@@ -16,6 +17,10 @@ export class AppComponent {
 
   changeResourceType (type): void {
     this.resourceMode = type;
+  }
+
+  changeBikeTypeFilter (type): void {
+    this.resourceFilter = type;
   }
 
   dismissStationDetails (): void {

@@ -1,6 +1,7 @@
 <div class="main">
 
   <app-map [resourceMode]="resourceMode"
+    [resourceFilter]="resourceFilter"
     (clickStation)="selectStation($event)">
   </app-map>
 
@@ -18,6 +19,19 @@
       </button>
       <button class="resource-type-toggle-button" (click)="changeResourceType('slots')">
         &#9678;
+      </button>
+    </div>
+
+    <div class="resource-filter-toggle"
+      [ngClass]="{'resource-filter-toggle--mech': resourceFilter === 'BIKE', 'resource-filter-toggle--elec': resourceFilter === 'BIKE-ELECTRIC'}">
+      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter('BIKE')">
+        m
+      </button>
+      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter(null)">
+        +
+      </button>
+      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter('BIKE-ELECTRIC')">
+        e
       </button>
     </div>
 
