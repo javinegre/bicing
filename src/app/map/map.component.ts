@@ -124,18 +124,18 @@ export class MapComponent implements OnInit{
     let resourceColor = '';
 
     if ( station.status !== 'OPN' ) {
-      resourceColor = 'black';
-    }
-    else if ( resources === 0 ) {
       resourceColor = 'gray';
     }
-    else if ( resources === 1 ) {
+    else if ( resources === 0 ) {
+      resourceColor = 'black';
+    }
+    else if ( resources === 2 ) {
       resourceColor = 'red';
     }
-    else if ( resources < 4 ) {
+    else if ( resources < 6 ) {
       resourceColor = 'orange';
     }
-    else if ( resources >= 4 ) {
+    else if ( resources >= 6 ) {
       resourceColor = 'green';
     }
 

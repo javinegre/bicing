@@ -115,3 +115,19 @@ nav.controls {
         outline: none;
     }
 }
+
+.refresh-button {
+    position: relative;
+    border: none;
+    width: 42px;
+    line-height: 42px;
+    margin: 0 8px;
+    padding: 0;
+    background-color: #323232;
+    font-size: 18px;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+}

@@ -1,6 +1,6 @@
 export default {
-    lat: 41.3949198,
-    lng: 2.1754737,
+    lat: 41.398269,
+    lng: 2.150632,
     zoom: 15,
     gestureHandling: 'greedy',
     styles: [
