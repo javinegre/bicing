@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Station } from './station';
+import { BicingApiResponse } from './bicing-api-response';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -27,9 +28,22 @@ export class StationService {
             const endpoint = simplifiedData
                 ? 'stations-simplified'
                 : 'stations';
-            this.http.get(`${this.server}${this.api}${endpoint}`).toPromise().then((stations: Station[]) => {
-                STATIONS = stations;
-                resolve(stations);
+
+            this.http.get(`${this.server}${this.api}${endpoint}`).toPromise().then((info: BicingApiResponse) => {
+                if ( !simplifiedData ) {
+                    STATIONS = info.stations;
+                }
+                else {
+                    STATIONS.forEach((st) => {
+                        const newStationData = info.stations.find((it) => it.id == st.id);
+                        if ( newStationData ) {
+                            st.slots = newStationData.slots;
+                            st.bikes = newStationData.bikes;
+                            st.status = newStationData.status;
+                        }
+                    });
+                }
+                resolve(info.stations);
             });
         })
     }
