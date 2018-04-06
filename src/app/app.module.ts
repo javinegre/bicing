@@ -19,7 +19,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: ''
+      apiKey: 'AIzaSyC1F4iKlWgbxDFh7OYp_GS6YyoeNkxDXMY'
     }),
     HttpClientModule
   ],
