@@ -7,25 +7,25 @@ const Api = require('./api/api.controller');
 
 app.use(cors({
   allowedOrigins: [
-    'localhost:4200',
+    'negre.co',
   ]
 }));
 
 app.use(express.static(__dirname + '/dist'));
 
-app.get('/api/v1.0/stations', (req, res) => {
+app.get('/api/v1.0/stations', async (req, res) => {
 
   const api = new Api();
-  const resData = api.getCompleteStationList();
+  const resData = await api.getCompleteStationList();
 
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(resData, null, 3));
 });
 
-app.get('/api/v1.0/stations-simplified', (req, res) => {
+app.get('/api/v1.0/stations-simplified', async (req, res) => {
 
   const api = new Api();
-  const resData = api.getSimplifiedStationList();
+  const resData = await api.getSimplifiedStationList();
 
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(resData, null, 3));
