@@ -8,7 +8,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev-serve": "ng serve --env=dev --ssl 1 --ssl-key '~/dev/cert/privateKey.key' --ssl-cert '~/dev/cert/certificate.crt'",
+    "dev-build": "ng build --env=dev --base-href '/bicing/'",
+    "prod-build": "ng build --env=prod --base-href '/bicing/'"
   },
   "private": true,
   "dependencies": {

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { StationDetailsComponent } from './station-details/station-details.component';
@@ -19,7 +21,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     BrowserModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC1F4iKlWgbxDFh7OYp_GS6YyoeNkxDXMY'
+      apiKey: environment.googleMapsApiKey
     }),
     HttpClientModule
   ],

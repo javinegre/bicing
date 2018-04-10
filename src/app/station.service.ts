@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { environment } from '../environments/environment';
+
 import { Station } from './station';
 import { BicingApiResponse } from './bicing-api-response';
 
@@ -12,7 +14,7 @@ let STATIONS = [];
 @Injectable()
 
 export class StationService {
-    server: string = 'http://negre.co/';
+    server: string = environment.bicingApiUrl;
     api: string = 'bicing/api/v1.0/';
 
     constructor(
