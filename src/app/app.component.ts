@@ -63,5 +63,23 @@ export class AppComponent {
       // TODO: Update icon maps
     });
   }
+
+  centerMap (): void {
+    if ( 'geolocation' in navigator ) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        setTimeout(() => { // https://stackoverflow.com/questions/47918502/expressionchangedafterithasbeencheck-error-in-using-angular-component
+          this.mapCenter = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+          };
+        });
+      },(error) => {
+        console.log(error);
+      }, {
+        timeout : 5000,
+        maximumAge: 60000
+      });
+    }
+  }
 }
 

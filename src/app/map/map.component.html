@@ -5,7 +5,8 @@
   [zoom]="mapConfig.zoom"
   [gestureHandling]="mapConfig.gestureHandling"
   [styles]="mapConfig.styles"
-  (centerChange)="mapDragEnd($event)">
+  (centerChange)="mapDragEnd($event)"
+  [usePanning]="true">
 
   <agm-marker *ngFor="let st of shownStations"
     [latitude]="st.latitude"

@@ -122,13 +122,13 @@ export class MapComponent implements OnInit{
     else if ( resources === 0 ) {
       resourceColor = 'black';
     }
-    else if ( resources === 2 ) {
+    else if ( resources <= 2 ) {
       resourceColor = 'red';
     }
-    else if ( resources < 6 ) {
+    else if ( resources <= 5 ) {
       resourceColor = 'orange';
     }
-    else if ( resources >= 6 ) {
+    else if ( resources > 5 ) {
       resourceColor = 'green';
     }
 

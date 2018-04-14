@@ -3,6 +3,19 @@ a {
     text-decoration: none;
 }
 
+@keyframes menuIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 .station-details {
 
     &-dialog {
@@ -47,9 +60,7 @@ a {
     }
 
     &--in &-dialog {
-        transform: translateX(0);
-        transition: transform cubic-bezier(0, 0.8, 0, 1) 600ms 120ms;
-        transition: transform ease 400ms 120ms;
+        animation: menuIn 280ms ease-out 100ms normal forwards;
     }
 
     &--in &-dialog-underlay {
