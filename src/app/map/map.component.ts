@@ -16,16 +16,12 @@ export class MapComponent implements OnInit{
   @Output() clickStation: EventEmitter<String> = new EventEmitter<String>();
   stations: Station[] = [];
   shownStations: ShownStation[] = [];
+  @Input() mapCenter: any;
   @Input() resourceMode: String;
   @Input() resourceFilter: String;
   @Input() stationSelected: String;
 
   mapConfig = MAPCONFIG;
-
-  mapCenter = {
-    lat: 0,
-    lng: 0
-  }
 
   mapUpdateTimer: any = null;
 
@@ -34,9 +30,6 @@ export class MapComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.mapCenter.lat = this.mapConfig.lat;
-    this.mapCenter.lng = this.mapConfig.lng;
-
     this.stationService.getStations(false).then(stations => {
       stations.map(st => {
         st.latitude = +st.latitude;

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { StationService } from './station.service';
 
+import MAPCONFIG from './map/map.config';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +10,7 @@ import { StationService } from './station.service';
 })
 
 export class AppComponent {
+  mapCenter: Object = {};
   stationSelected: String = null;
   resourceMode: String = 'bikes'; // 'bikes' || 'slots'
   resourceFilter: String = null; // null || 'BIKE' || 'BIKE-ELECTRIC'
@@ -16,10 +19,23 @@ export class AppComponent {
 
   constructor (
       private stationService: StationService
-  ) { }
+  ) {
+    this.mapCenter = {
+      lat: MAPCONFIG.lat,
+      lng: MAPCONFIG.lng
+    };
+  }
 
   selectStation (id): void {
     this.stationSelected = id;
+    this.stationService.getStation(this.stationSelected).then(station => {
+      setTimeout(() => {
+        this.mapCenter = {
+          lat: station.latitude,
+          lng: station.longitude
+        };
+      }, 400); // Wait for animation to finish
+    });
   }
 
   changeResourceType (type): void {

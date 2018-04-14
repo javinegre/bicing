@@ -1,6 +1,7 @@
 <div class="main">
 
-  <app-map [resourceMode]="resourceMode"
+  <app-map [mapCenter]="mapCenter"
+    [resourceMode]="resourceMode"
     [resourceFilter]="resourceFilter"
     (clickStation)="selectStation($event)">
   </app-map>
