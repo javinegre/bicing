@@ -40,7 +40,10 @@ export class StationService {
                 this.updateTime = info.updateTime;
 
                 resolve(this.stationList);
-            }).catch((err) => console.error(err));
+            }).catch((err) => {
+                console.error(err);
+                reject(this.stationList);
+            });
         })
     }
 

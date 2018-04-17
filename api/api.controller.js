@@ -30,7 +30,14 @@ class Api {
 
     if ( !info ) {
       info = await fetch('http://wservice.viabicing.cat/v2/stations')
-        .then(res => res.json());
+        .then(res => res.json())
+        .catch(err => {
+          console.error(err);
+          return {
+            'stations': [],
+            'updateTime': -1
+          };
+        });
 
       cache.put(this.cacheKey, info, this.ttl);
     }

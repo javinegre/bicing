@@ -38,7 +38,7 @@ export class MapComponent implements OnInit{
 
       this.stations = stations;
       this.filterStations();
-    });
+    }).catch(err => console.log(err));
   }
 
   filterStations(): void {
