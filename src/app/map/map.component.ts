@@ -102,7 +102,7 @@ export class MapComponent implements OnInit{
       ? +station.bikes
       : +station.slots;
 
-    const resourceType = station._radio === 'outer' || this.resourceMode === 'bikes'
+    const resourceType = this.resourceMode === 'bikes'
       ? 'bikes'
       : 'slots';
 
