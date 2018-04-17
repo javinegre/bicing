@@ -12,38 +12,57 @@
     (clickBackdrop)="dismissStationDetails()">
   </app-station-details>
 
-  <nav class="controls">
+  <nav class="nav-filters">
 
-    <div class="resource-type-toggle" [ngClass]="resourceMode === 'bikes' ? 'resource-type-toggle--bikes' : 'resource-type-toggle--slots'">
-      <button class="resource-type-toggle-button" (click)="changeResourceType('bikes')">
-        &#9673;
-      </button>
-      <button class="resource-type-toggle-button" (click)="changeResourceType('slots')">
+    <div class="toggle-control">
+      <div class="toggle-label">
+       &#9673;
+      </div>
+      <div class="toggle-switch"
+        (click)="toggleResourceType()"
+        [ngClass]="{ 'toggled': resourceMode === 'slots' }" >
+      </div>
+      <div class="toggle-label">
         &#9678;
-      </button>
+      </div>
     </div>
 
-    <div class="resource-filter-toggle"
-      [ngClass]="{'resource-filter-toggle--mech': resourceFilter === 'BIKE', 'resource-filter-toggle--elec': resourceFilter === 'BIKE-ELECTRIC'}">
-      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter('BIKE')">
+    <div class="toggle-control">
+      <div class="toggle-label">
         m
-      </button>
-      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter(null)">
-        +
-      </button>
-      <button class="resource-filter-toggle-button" (click)="changeBikeTypeFilter('BIKE-ELECTRIC')">
-        e
-      </button>
+      </div>
+      <div class="toggle-switch on-off"
+           (click)="toggleFilter('BIKE')"
+           [ngClass]="{ 'toggled': resourceFilter === null || resourceFilter === 'BIKE' }" >
+      </div>
     </div>
 
-    <button class="refresh-button" (click)="refreshStationList()">
+    <div class="toggle-control">
+      <div class="toggle-label">
+        e
+      </div>
+      <div class="toggle-switch on-off"
+           (click)="toggleFilter('BIKE-ELECTRIC')"
+           [ngClass]="{ 'toggled': resourceFilter === null || resourceFilter === 'BIKE-ELECTRIC' }" >
+      </div>
+    </div>
+
+  </nav>
+
+  <nav class="nav-refresh">
+    <button class="refresh-button nav-button" (click)="refreshStationList()">
       r
     </button>
+  </nav>
 
-    <button class="refresh-button" (click)="centerMap()">
-      c
+  <nav class="nav-places">
+    <button class="place-button nav-button" (click)="centerMap('geo')">
+      g
     </button>
 
+    <button class="place-button nav-button" (click)="centerMap('home')">
+      h
+    </button>
   </nav>
 
 </div>

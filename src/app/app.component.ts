@@ -38,12 +38,21 @@ export class AppComponent {
     });
   }
 
-  changeResourceType (type): void {
-    this.resourceMode = type;
+  toggleResourceType (): void {
+    this.resourceMode = this.resourceMode === 'bikes' ? 'slots' : 'bikes';
   }
 
-  changeBikeTypeFilter (type): void {
-    this.resourceFilter = type;
+  toggleFilter (type): void {
+    if ( type == 'BIKE' ) {
+      this.resourceFilter = this.resourceFilter === null || this.resourceFilter === 'BIKE'
+         ? 'BIKE-ELECTRIC'
+         : null;
+    }
+    else {
+      this.resourceFilter = this.resourceFilter === null || this.resourceFilter === 'BIKE-ELECTRIC'
+         ? 'BIKE'
+         : null;
+    }
   }
 
   dismissStationDetails (): void {
@@ -64,7 +73,23 @@ export class AppComponent {
     });
   }
 
-  centerMap (): void {
+  centerMap (center: String): void {
+    switch (center) {
+      case 'geo':
+        this.geoLocate();
+        break;
+      case 'home':
+        this.mapCenter = {
+          lat: 41.398269,
+          lng: 2.150632
+        };
+      // case 'fav1':
+      // case 'fav2':
+      //   break;
+    }
+  }
+
+  geoLocate (): void {
     if ( 'geolocation' in navigator ) {
       navigator.geolocation.getCurrentPosition((pos) => {
         setTimeout(() => { // https://stackoverflow.com/questions/47918502/expressionchangedafterithasbeencheck-error-in-using-angular-component
@@ -76,7 +101,7 @@ export class AppComponent {
       },(error) => {
         console.log(error);
       }, {
-        timeout : 5000,
+        timeout : 10000,
         maximumAge: 60000
       });
     }
